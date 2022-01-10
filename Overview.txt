@@ -1,1 +1,129 @@
-ilk satir
+-- Yazilim gelistirme isi basladigindan beri farkli yöntemler uygulaniyordu.
+-- Günümüz teknolojisine ayak uydurmak icin ortaya cikan yazilim 
+gelistirme yöntemlerinde biri de DevOps dur 
+
+
+-- Devops un focus noktasi;
+-- collaboration between developers and other roles
+
+-- Yazilim sirketinde, yazilim takimlarinda belirli bir alana yönelik bir kültür diyebilirz
+
+-- Devops ilk ortaya atildiginda bir tool, bir role yada bir team olarak ortaya cikmadi
+-- bir kültür olarak ortaya cikti
+
+-- Bunun alti tool larla rollerle desteklenebilir ama.
+
+-- Devops sonsuzluk isareti ile ifade edilir
+
+-- Devops kültürü, yazilimi gelistiren developerlar ile bu yazilimi canli olarak kullanan, 
+-- müsteri ile bulusturan ve bunlari pc sistemlerine yükleyen operation team leri arasindaki
+-- koordineyi ve isbirligini saglamaktir
+
+
+-- Burada amac, yazilim gelistirme sürecini kisaltmak ve yazilim gelistirildikten sonra da islem 
+-- bitmedigi icin, yani müsteriye uzun yillar support hizmeti sundugumuz icin, update islemlerini 
+ sürekli olarak yerine getirdigimiz icin, bu islemi kolaylastirmaktir
+
+ -- Devops is a set of practices that combines software development and 
+ --  IT operatins
+
+ -- It aims to shorten the systems development life cycle and provide
+ --  continuous delivery with software quality
+ (Müsteriyi her daim memnun etmek, sürekli kaliteli ürün saglama)
+
+
+ --  Devops, Agile in tamamlayicisidir. Agile baska bir alana odaklanir, devops da baska bir alana 
+
+ -- Agile daha eski bir methodology oldugundan, Bazi Devops bakis acilari 
+ -- Agile dan gelmektedir 
+
+ -- Devops, developers ve operations arasindaki boslugu ele almistir 
+ -- Agile ise developer team ile müsteri arasindaki , team ile Business 
+ -- arasindaki boslugu ele almistir 
+
+ --  Eski sistemlerde, mesela bir araba firmasi düsünelim. Mühendisler ile montaj elemanlari arasinda 
+ -- bir koordine yok. Mühendisler mesela arabanin 5 saniyede 100 km ye cikacagini planliyor. Ama test asamasinda
+ -- bu gerceklesmiyor. Bundan sonra iki ekip arasinda tartismalar basliyor. 
+
+ -- Iste bu durumun önüne gecebilmek icin devops kültürü ortaya cikmistir. Haftanin ve ayin belirli günlerinde
+ -- iki ekip calisanlari toplantilar yaparak, koordineli bir calisma yapmaya baslamislardir 
+
+ --- Günümüz yazilim sirketlerinde roller:
+
+ ## Development team:
+
+ -- Project manager
+ -- Software architects
+ -- Developers 
+ -- Testers/QA  (quality assurance)
+
+
+ Operation team:
+
+ -- System administrator (linux, windows)
+ -- database admin 
+ -- release engineers (ürünlerin test yada development ortamina cikarilmasi)
+ -- network    "
+ -- Security Professionals
+
+
+ -- Developers team inin temel amaci, calistigi sirketten para almasinin temel amaci, 
+ -- sürekli gelisim, sürekli yenilik yapmak 
+
+ -- Operations team ise calisan sistemin bozulmasini istemez. Yani stability ister
+ -- aralarinda ise bir iletisimsizlik var
+
+ -- Iste Devops sayesinde, bu iki ekip arasindaki duvar yikiliyor
+
+ -- Yani iki ekip de ayni gemide oldugu icin bir tarafin batmasi ikisininde batmasi demektir.
+ -- iste Devops ile iki ekip de ayni gemide olduklarinin farkina varmislardir 
+
+ -- Bu problemler hemen bir anda cözülmüyor. Bir konsept üzerine oturmasi gerekiyor.
+ - Bu da su iki soru ile oluyor:
+
+ -- 1: How can dev help system stability? 
+ -- yani dev ekibi ops ekibine nasil yardim edebilir
+
+ -- 2: How can ops help accelerate feature delivery?
+
+ -- Dev + Ops arasinda duvar su sekilde yikildi :  
+
+ 1: Communication
+ 2: Collaboration 
+ 3: Integration
+
+
+-- Ops ekibi, dev ekibinin iyi bir kod yazdigina inanmali
+
+-- Dev ekibi de, ops ekibinin bunu hizli bir sekilde hayata gecirdigine inanmali 
+
+-- Parola ise;  Güven ama dogrula 
+
+-- Dev ve Ops ekipleri, Agile da gördügümüz gibi aradaki bu kordineyi saglamak icin 
+-- sabahlari stand up meeting yapar 
+
+-- Gelistiricilerin yazilim gelistirmesi icin olusturulan ortama "envirement" denir 
+
+-- Developer lar tarafindan gelistirilen ve calistigina inanilan kod "staging" alana cekilir
+-- Burada birkac hafta sorunsuz calismasi beklenir 
+
+-- Buradan sonra "test" ortami gelir. Ve müsteriye saglanan ortama en yakin hale getirilmis ortam burasidir
+-- Burada tester lar tarafindan gercek zamanli olarak test e tabi tutulur 
+-- Müsteride gerceklesecek yogunluk benzer sekilde sanal olarak olusturulur 
+
+
+-- Devops kültüründeki Anahtar kelimeler:
+
+-- Change is good
+-- Tools (cesitli tool lar kullanilir)
+-- Transperency (seffaflik)
+-- Rewarding good behaviors (bircok ödül ve insanlari motive etme yöntemi vardir)
+-- Suclama yok, cünkü iki ekip de ayni amac icin calisir (No blame)
+-- grass roots innovation 
+-- accountability (hesap verebilirlik)
+-- embrace failure (Basarisizligi kucaklamak)
+-- Trust
+-- honesty and openness (dürüstlük ve aciklik)
+-- Communication 
+-- Collaboration 
+-- 
