@@ -126,4 +126,6 @@ gelistirme yöntemlerinde biri de DevOps dur
 -- honesty and openness (dürüstlük ve aciklik)
 -- Communication 
 -- Collaboration 
--- 
+
+
+
