@@ -127,5 +127,410 @@ gelistirme yöntemlerinde biri de DevOps dur
 -- Communication 
 -- Collaboration 
 
+#### DevSecOps:
 
+-- Eskiden dev ve ops takimlari birbiri ile kavga halindeyken yada iletisim haline gecmeye
+-- calisirken, güvenligin baska birine ait oldugunu düsünüyorlardi
+
+-- Bu düsünce yapisi ile, güvenlik kismini da bu takimalrin almasi gerektigi ortaya cikti 
+
+-- Özet olarak:
+
+-- Devops:
+
+-- Ops ekibi ile dev ekibinin ayni gemide oldugunun hatirlatilmasi
+-- Ops dan gelen feedback lerin, dev tarafindan application'a iyi bir sekilde yansitilmasi
+-- Ops team leri de, dev den gelen app leri monitor etmeli ve relevant feedback saglamali
+-- Ve iki ekibin güven icinde calismasi 
+
+
+
+-- CD (continuous Deployment yada 
+        continuous Delivery)
+
+############ DevOps Phases:
+
+1: Plan 
+2: code 
+3: build (yazilan kodlarin build edilmesi)
+4: test 
+5: release (Hazirlanan sunumun piyasaya sürülmesi)
+6: deploy (ürünü kim talep etti ise ürünün o kisiye deploy edilmesi, hizmetine sunulmasi)
+7: operate
+8: monitor (devamli calisir halde olmasi icin monite edilmesi)
+
+
+
+
+
+1: Plan:  Pseudocode yada flowchart lar ile algoritma hazirliklari bu asamaya aittir 
+
+-- Bu asamada, business owners(yani müsteri ekibinden) ve development team projenin hedeflerini tartisir ve 
+bir plan olustururlar
+
+-- nasil bir ürün istiyoruz, bu ürün bize ne katacak gibi sorular
+
+-- Müsteri ile yapilan toplantidan sonra, product owner, bir de kendi development team i ile toplanti yapar 
+-- yani bizden bunu istiyorlar, biz ne yapmaliyiz
+
+-- Projecz manager yada product owner bu projeyi developer in önüne pseudocode, flowchart seklinde getirir 
+
+
+
+2: Code: Developerlar bu asamada kodlamaya baslarlar
+
+
+3: Build: Bu asamada, Maven ve Gradle gibi tool lar, farkli repolardan kodlari alir, ve bu kodlari kombine ederek
+-- complete application'i build eder 
+-- Bu tool lar bize paketlenmis entegre edilmis program ciktisi verir 
+
+-- mesela eskiden disket icerisinde, office programlari gelirdi. iste bunlar ziplenmis dosyalardi
+
+-- Build etmemizin amaci, yazilimi, test edecegimiz yada müsteriye teslim edecegimiz server lara yüklemeden önce hazir hale getirmektir
+
+-- Build edilmeye ihtiyaci olmayan yazilimlarda vardir 
+
+-- Build islemi bitse bile buradaki veri test edilmemistir. Build edilmis ve test edilmis veri release edilir. 
+-- Bu islme github da yada sirketin kullandigi hesapta olabilir 
+-- release date (piyasaya sürüm tarihidir)
+
+-- code ile build ayni sey degildir
+
+4: Test: 
+
+-- Application,  otomasyon testing tool lari kullanilarak (Selenium yada JUnit gibi)
+-- test edilir. (Software in kalitesinden emin olmak icin)
+
+-- Selenium dedigimiz program, bizim ürünümüzü alir, tüm detaylarina girer, en ince ayrintisina kadar kullanir, 
+-- bütün buttonlara tiklar ve cevap verme sürelerini test eder. Ve daha bircok sey 
+-- Sonra bir rapor cikarir. Su kadar kisim testten gecti, su kadar gecmedi. 
+-- Ve bu sonuclar developer lara gönderilir
+
+-- Buradaki test unique test tie yani her bir fonksiyon test edilir.
+
+-- Buradan sonra ise performans testine tabi tutulur 
+-- Yani müsteri ile karsilasmis gibi bir ortam olusturulur 
+
+-- Test de bir koddur. Tester lar yada developer lar tarafindan yazilir 
+
+
+
+
+### Integrate Phase:  (release asamasinin diger adidir) 
+
+Eskiden kod lar tek asamali olarak yazilirdi. Yani tüm kod tek bir dosya halinde.
+
+-- simdi ise microservice yapisi kullanilmaktadir. Mesela web sitedeki her bir hizmet ayri bir microservice olarak 
+-- ele alinir. Bu nedenle her bir microservice yazildiktan sonra ayri ayri teste tabi tutulur. 
+
+-- Ve tüm testler tamamlandiktan sonra, bu micro lar birbirine entegre edilir 
+
+-- Yine burada da Jenkins kullanilir 
+
+-- Buraya kadar yapilan isleme integration denilir.
+
+-- Bu islemin sürekli olarak yapilmasina da "continuous integration (CI)" denilir.
+
+
+
+
+##### Deploy Phase:
+
+-- Bu asamadan önce ürün staging'e cekilir.
+-- Yani integration dan sonra ürün staging e cekilir. Burada ürüne sanal trafik yönlendirilir.
+-- Bu asamada, ürünün entegre edilmis hali test edilir. 
+-- Eger ürün bu asamayi da gecmis ise release asamasinda piyasaya sürülür.
+
+Release dan sonra ürün müsteriye teslim etmek icin hazirlanir (deploy)
+-- yani, ürünün calismasi icin gerekli olan server lar aws de kiralanir, 
+-- gerekli olan diger arka planda calisan hizmetler hazir edilir 
+
+-- Eger biz kendi server imizda hizmet vereceksek ona göre, yada müsteri kendi server inda calistiracak ise ona uygun 
+-- olacak sekilde bir hazirlama yapilir 
+
+-- Deployment asamasinda, müsteriye gerekli token ve sifreler verilir 
+
+
+
+
+
+####### Operate: 
+
+-- Software deploy edildikten sonra, operation team, serverlari configure etme yada 
+-- ihtiyac olan kaynaklari saglama gibi aktiviteler ile mesgul olur.
+-- Yani ürünün kesintisiz calismasi saglanir 
+
+--- Ansible gibi bir tool var, bir kod yazdigimizda tüm server larda islem yapar. mesela sirkete 
+-- yeni bir devops cu girecek. Bu kisiye tüm server lara giris yetkisi verecegiz. 
+-- Iste böyle islemler tek bir kod ile yapilir 
+
+
+
+
+
+
+############## Monitor:
+
+-- Operate ile iliskili bir asamadir. biz app i 24 saat monite etmek zorundayiz
+
+-- aws nin ve windows un monite etmek icin cok güzel tool lari vardir 
+
+-- Hizmet sundugumuz müsteriler icin kullandigimiz server larin yük durumunu ve 
+güvenlik durumunu sürekli olarak kontrol etmek zorundayiz 
+
+-- Aws gibi hizmetler kullandigimizda, bu sirketlerin semsiyesi altina siginmis oluyoruz
+
+-- Monitore ettigimizde elde ettgimiz verileri saklariz. Mesela yilin hangi döneminde yogunluk 
+--- oluyor gibi bilgiler. Bu bilgiler ile gelecek yillarda cok faydali isler yapariz.
+-- Mesela aws de önceden pc reserve ederiz ve fiyat da indirim olur 
+
+-- Bu safhada da kullanilan özel tool lar vardir 
+
+ 
+
+
+
+
+
+
+
+
+########### DevOps Processes:
+
+-- Bir pipeline, automate edilebilen tasklar zinciridir
+
+-- Integration Tools, pipeline'i bir task'i tekrarli ve devamli olarak calistirabilmek icin kullanir
+
+-- Pipeline tabiri daha önce saydigimiz safhalarin birlestirilmesinden ve entegre edilmesinden ortaya cikar
+
+-- CI (continuous Integration) = CD (Continuous Delivery)
+
+-- Pipeline: Birden cok görevi bi araya getirip bunlari otomasyona sokma 
+-- islemine denir. Bunu yapan server Jenkins dir 
+
+-- Yukarida bahsettigimiz safhalar, Bu pipeline üzerine sira ile yerlestirilir ve 
+-- triger denilen bir tetikleyici olur. Bu tetikleyici ile pipeline harekete gecer 
+
+-- Boru hatti, Development team inden kod olarak aldigi veriyi en son Production olarak cikarir 
+
+-- Ama tüm safhalardan basarili bir sekilde gecmesi gerekir 
+
+-- Jenkins in bir arayüzü de var ama daha cok, boru hattinda yapilacak islemler jenkins de kod 
+-- halinde yazilir ve bu server bu kodlar ile verileri isleme tabi tutar 
+
+-- Bu olay bir defa degil devamli olarak tekrar eder. Bu tetikleyici ile olur. 
+-- Örnek bir tetikleyici;  developer kod da bir degisiklik yapti ve github a push etti.
+-- Sonra project manager da bunu merge etti. Iste bu merge isleminden sonra jenkins faaliyete gecer 
+
+-- Boru hattina gerceklestirilecek safhalari kendimiz belirleriz 
+
+
+-- Devops Processes:
+
+-- Continuous Development 
+-- Continuous Integration 
+-- Continuous Testing 
+-- Continuous Deployment 
+-- Continuous Monitoring 
+-- Continuous Feedback 
+
+-- Sürekli development,  sürekli feedback alinarak yapiliyor ve sonsuz bir döngü 
+
+-- Bunun bize sagladiklari:
+
+-- Standardize edilmis environments
+
+-- Yeni ürünlerde hata oranini düsürme 
+
+-- Version lar arasinda lead time i kisaltma 
+
+
+-- Test safhasi iki kisimdan olusur 
+
+1: Unit test: Tek bir kod parcaciginin yani micro service in test edilmesi 
+
+2: integration test: Birinci testi gecmis kod parcaciklarinin, birbirine entegre
+--  edilerek tüm kodun test edilmesi 
+
+
+-- CI/ CD SAFHALARININ DETAYLARI:
+
+############   1:  Continuous Integration:  
+
+-- Bu kisim; kod larin github gibi mecralara commit edilmesini ve 
+-- Unit test ile Integration testlerini icerir
+--- Yani:
+
+Commit Code >>>  Unit & Integration Test
+
+
+
+
+
+
+
+######## 2: Continuous Delivery:
+
+-- Bu kisimda yukaridaki iki safha ile birlikte sunlari icerir 
+
+
+Commit Code >>> Unit & Integration Test >>>  Deploy to testing environment  >>> Kullanici Acceptance test 
+
+
+Bu asama; Agile da her sprint sonunda müsteri ile yaptigimiz sprint review meeting in konusudur
+
+
+
+
+
+
+
+
+######## 3: Continuous Deployment:
+
+
+Commit Code >>> Unit & Integration Test >>>  Deploy to testing environment  >>> Kullanici Acceptance test >>>
+
+Deploy to produktion Environment 
+
+
+-- Testler tamamlanmis ise deploy a hazirdir
+
+
+
+
+
+
+######### Safhalarda kullanilan Tool lar:
+
+1: Version Control: Github, Gitlab, Bitbucket 
+
+2: Build:  NPM,  Maven,  Gradle 
+
+-- Bunlarin yaptigi tek is yazdigimiz kodlari build etmektir.
+
+3: Unit Test: JUnit Sonarqube
+
+-- Bunlar tek tek microservice leri test eder ve ilgili developer a 
+-- sonuclari saglar 
+
+4: Deploy:  Kubernetes, Ansible, Docker 
+
+-- Kubernetes mantik olarak söyle calisir:
+
+-- 20  25 tane Linux makinenin bir birbirine baglanip, sürü seklinde calistirilmasi mantigi.
+-- yani bu makinelerden birisine zarar gelse bile digerleri calismaya devam eder 
+
+-- Ansible: Birden fazla server i yönetmeye yarar
+-- Birden cok islemi Otomasyon islemleri 
+
+5: Auto Test: Se (Selenium), VS Code UI 
+
+
+6: Deploy to Production: 
+
+-- 4. asamadaki deploy'u development, test ve staging icin kullaniriz 
+
+-- Burada da ayni tool lari kullaniriz ama Production icin yani müsteriye ulastirmak icin 
+
+
+7: Monitor:
+
+-- Grafana,  Prometheus
+
+
+
+
+### Eskiden Traditional way de, tüm kod lar yazilirdi hepsi bittikten sonra ana repoya merge edilirdi.
+Daha sonrasinda ise Tester lar tüm kodu teste tabi tutardi ve cikan hatalari düzeltmek cok zor olur ve 
+tekrar basa dönülürdü. Eger testten gecerse de deploy edilirdi.
+-- Cünkü eskiden su an ki tool lar yoktu
+
+### Simdi CI ve CD ile,  Microservice yazilir ve test edilip entegre edilir.
+-- Her bir micro bu sekilde yapilarak devam edilir ve tüm kod bittiginde deploy edilir 
+
+
+-- Yani burada, computational thinking deki "Decomposition"
+-- Kücük parcalara bölme yapilir 
+
+
+
+
+
+
+--- Devops ekipleri su 3 takimin kesisim kümesinde bulunur:
+
+1:  Development 
+2:  QA (tester)
+3:  IT Operations 
+
+-- Devops ekibi, bu 3 team arasindaki koordineyi saglar,
+-- Pipeline in ayakta kalmasini,
+-- Pipeline in safhalarina ait server larin ayakta kalmasi 
+-- Test yapmazlar ama test serverlarinin ayakta kalmasi 
+-- Production serverlarinin ayakta kalmasi 
+-- Development server larinin ayakta kalmasi 
+
+
+
+
+#### Devops'un bize sagladigi faydalar:
+
+1: Software gelistirme ve müsteriye teslim etme süresinin azalmasi 
+
+2: Bir yazilimi sürekli devam ettirme isleminin komplex ligini azaltma 
+
+3: Dev ve ops ekipleri arasinda collaboration 
+
+4: CI ve CD marketten alinan feedback lere hizli tepki saglar 
+
+
+
+
+
+### Devops dezavantajlari:
+
+
+1: Budget (her tool ücretsiz degil)
+
+2: Lack of Culture: (yeni oldugu icin herkes bilmiyor, kültürü oturtmak zor)
+
+3: Lack of skill (Kalifiye eleman yetistirmek zor)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+##### Kullanilan Tool lar:
+
+1: Plan: 
+2: Code: git, jira, confluence
+
+3: Build: sbt,  maven 
+
+4: Test: Se (selenium), JUnit, 
+
+5: Release: Jenkins, Codeship
+
+6: Deploy: aws, docker
+
+7: operate: chef, ansible, kubernetes
+
+8: Monitor: Nagios, splunk, Datadog 
 
